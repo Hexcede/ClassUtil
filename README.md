@@ -3,7 +3,7 @@ ClassUtil is a utility module aimed for ease of use with object oriented program
 See **Usage** section below.
 
 ## Installation
-### Option 1 - With RoStrap framework (what I recommend for organizational purposes)
+### Option 1 - With RoStrap framework (what I personally recommend for organization)
 1. Install RoStrap (https://rostrap.github.io/Getting-Started/).
 2. Run the plugin and select a framework location.
 3. Insert the module into the framework `Packages` folder.
@@ -13,7 +13,7 @@ See **Usage** section below.
 2. Locate and require the module
 
 ## Usage
-Your class should use something like the following: `return ClassUtil:Class(MyClass)`. This creates a `.new` function for the supplied class. Your class *must* contain a :Constructor method in order for `.new` to work. The self argument is the current instantiated object (see below). The main arguments are passed from `.new`.
+Your class should use something like the following: `return ClassUtil:Class(MyClass)`. This creates a `.new` function for the supplied class. Your class *must* contain a `:Constructor` method and it must be defined *before* `:Class` is called in order for `.new` to work. The self argument of the Constructor function is the newly instantiated object (see below). The main arguments are passed from `.new`.
 ```lua
 local MyParentClass = {}
 function MyParentClass:MyMethod(...)
