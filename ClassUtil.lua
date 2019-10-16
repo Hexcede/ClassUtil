@@ -29,7 +29,7 @@ function ClassUtil:Instantiate(Child, ...)
 			targ.super = super
 		end
 		
-		return self.Construct(inst, ...) or inst
+		return (self.Constructor or self.Construct)(inst, ...) or inst
 	end
 	
 	local child = construct(Child, {}, ...)
@@ -60,9 +60,12 @@ function ClassUtil:Class(Class, Parent)
 		return ClassUtil:Instantiate(Class, ...)
 	end
 	
-	local construct = Class.Construct
+	local construct = Class.Constructor or Class.Construct
 	function Class.Construct(inst, ...)
 		return construct(assert(inst.super, "Please use Class.new() not Class:Construct()!"), ...)
+	end
+	function Class.Constructor(inst, ...)
+		return construct(assert(inst.super, "Please use Class.new() not Class:Constructor()!"), ...)
 	end
 	
 	return Class
