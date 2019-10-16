@@ -43,7 +43,7 @@ function MyClass:MyMethod(...)
 	self.super:MyMethod2(...) -- Super exists here too
 end
 function MyClass:MyParentMethod(...)
-	error("You shouldn't see me because I'm overriden!")
+	warn("I'm overridden but still called!")
 end
 function MyClass:Constructor(...)
 	self.super:MyMethod(...) -- super contains all MyClass methods and properties but not any inherited ones.
