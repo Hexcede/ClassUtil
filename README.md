@@ -1,5 +1,5 @@
 # ClassUtil
-ClassUtil is a utility module aimed for ease of use with object oriented programming in Roblox. It uses zero metatables (better performance!) and is easy to use!
+ClassUtil is a utility module aimed for ease of use with object oriented programming in Roblox. It uses zero metatables (better performance!) and is easy to use! It offers an easy and clean way to handle class inheritance.
 See **Usage** section below.
 
 ## Installation
