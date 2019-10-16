@@ -52,6 +52,8 @@ function ClassUtil:Class(Class, Parent)
 		for index, value in pairs(Class) do
 			clone[index] = value
 		end
+
+		clone.Parent = Parent
 		
 		Class = clone
 	end
