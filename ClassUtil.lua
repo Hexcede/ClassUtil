@@ -45,7 +45,17 @@ function ClassUtil:Instantiate(Child, ...)
 	return make(child, ...)
 end
 
-function ClassUtil:Class(Class)
+function ClassUtil:Class(Class, Parent)
+	if Parent then
+		local clone = {}
+		
+		for index, value in pairs(Class)
+			clone[index] = value
+		end
+		
+		Class = clone
+	end
+	
 	Class.new = function(...)
 		return ClassUtil:Instantiate(Class, ...)
 	end
@@ -56,10 +66,6 @@ function ClassUtil:Class(Class)
 	end
 	
 	return Class
-end
-
-function ClassUtil:Extend(Child, Parent)
-	Child.Parent = Parent
 end
 
 return ClassUtil
