@@ -13,7 +13,9 @@ See **Usage** section below.
 2. Locate and require the module
 
 ## Usage
-Your class should use something like the following: `return ClassUtil:Class(MyClass)`. This creates a `.new` function for the supplied class. Your class *must* contain a `:Constructor` method and it must be defined *before* `:Class` is called in order for `.new` to work. The self argument of the Constructor function is the newly instantiated object (see below). The main arguments are passed from `.new`.
+Your class must use the following: `ClassUtil:Class(MyClass, [ParentClass])`. This creates a `.new` function for the supplied (or new combo) class. Your class *must* contain a `:Constructor()` method and it must be defined *before* `ClassUtil:Class()` is called in order for `.new` to work. The self argument of the Constructor function is the newly instantiated object (see below). The rest of the function arguments are passed from `.new` to the constructor function.
+
+To create
 ```lua
 local MyParentClass = {}
 function MyParentClass:MyMethod(...)
