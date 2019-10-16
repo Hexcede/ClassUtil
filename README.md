@@ -47,5 +47,4 @@ end
 local MyComboClass = ClassUtil:Class(MyClass, MyParentClass) -- Must go after Constructor. Returns copy of MyClass with its parent set to MyParentClass.
 
 MyComboClass.new("abc123", "secondArg", 123)
-
 ```
