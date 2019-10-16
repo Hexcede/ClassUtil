@@ -19,10 +19,13 @@ local MyParentClass = {}
 function MyParentClass:MyMethod(...)
 	print("From MyParentClass", ...)
 end
+function MyParentClass:MyParentMethod(...)
+	print("From MyParentClass (in parent method)", ...)
+end
 function MyParentClass:Constructor(...)
 	self:MyMethod("Called by MyParentClass!")
-	self.super:MyMethod(...) -- super contains all MyParentClass methods and properties but not any inherited ones.
-	self.super.super:MyParentMethod(...) -- super.super contains all child (MyClass) class methods and properties but not any inherited ones.
+	self.super:MyMethod(...) -- super still contains all MyClass methods and properties but not any inherited ones.
+	self.super.super:MyParentMethod(...) -- super.super contains all parent (MyParentClass) class methods and properties but not any inherited ones.
 end
 
 ClassUtil:Class(MyParentClass) -- Must go after Constructor. Returns MyClass again.
@@ -47,4 +50,12 @@ end
 local MyComboClass = ClassUtil:Class(MyClass, MyParentClass) -- Must go after Constructor. Returns copy of MyClass with its parent set to MyParentClass.
 
 MyComboClass.new("abc123", "secondArg", 123)
+```
+
+Output:
+```
+From MyClass abc123 secondArg 123
+From MyParentClass Called by MyParentClass!
+From MyClass abc123 secondArg 123
+From MyParentClass (in parent method) abc123 secondArg 123
 ```
