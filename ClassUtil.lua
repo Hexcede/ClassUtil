@@ -6,18 +6,17 @@ function ClassUtil:Instantiate(Child, ...)
 		
 		for index, value in pairs(self) do
 			if index ~= "Parent" then
+				inst[index] = value
 				if typeof(inst[index]) == "function" then
 					local func = value
 					local func2 = inst[index]
-					value = function(self, ...)
+					inst[index] = function(self, ...)
 						if func2 then
 							func2(self, ...)
 						end
 						return func(self, ...)
 					end
 				end
-				
-				inst[index] = value
 				
 				if typeof(value) == "function" then
 					local func = value
