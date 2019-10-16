@@ -44,7 +44,8 @@ function MyClass:Constructor(...)
 	self.super:MyMethod(...) -- super contains all MyClass methods and properties but not any inherited ones.
 end
 
-ClassUtil:Class(MyClass) -- Must go after Constructor. Returns MyClass again.
+local MyComboClass = ClassUtil:Class(MyClass, MyParentClass) -- Must go after Constructor. Returns copy of MyClass with its parent set to MyParentClass.
 
-MyClass.Parent = MyParentClass
+MyComboClass.new("abc123", "secondArg", 123)
+
 ```
