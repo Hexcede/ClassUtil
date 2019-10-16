@@ -15,8 +15,8 @@ function ClassUtil:Instantiate(Child, ...)
 							self = inst
 						end
 						if self.super then
-							if self.super[index] and typeof(self.super[index]) == "function" then
-								self.super[index](self, ...)
+							if self.super.super and self.super.super[index] and typeof(self.super.super[index]) == "function" then
+								self.super.super[index](self, ...)
 							end
 						end
 						return func(self, ...)
