@@ -49,7 +49,7 @@ function ClassUtil:Class(Class, Parent)
 	if Parent then
 		local clone = {}
 		
-		for index, value in pairs(Class)
+		for index, value in pairs(Class) do
 			clone[index] = value
 		end
 		
