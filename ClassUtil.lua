@@ -7,6 +7,16 @@ function ClassUtil:Instantiate(Child, ...)
 		for index, value in pairs(self) do
 			if index ~= "Parent" then
 				inst[index] = value
+				
+				if typeof(value) == "function" then
+					local func = value
+					value = function(self, ...)
+						if self == super then
+							self = inst
+						end
+						return func(self, ...)
+					end
+				end
 				super[index] = value
 			end
 		end
