@@ -62,10 +62,12 @@ function ClassUtil:Class(Class, Parent)
 	
 	local construct = Class.Constructor or Class.Construct
 	function Class.Construct(inst, ...)
-		return construct(assert(inst.super, "Please use Class.new() not Class:Construct()!"), ...)
+		assert(inst.super, "Please use Class.new() not Class:Construct()!")
+		return construct(inst, ...)
 	end
 	function Class.Constructor(inst, ...)
-		return construct(assert(inst.super, "Please use Class.new() not Class:Constructor()!"), ...)
+		assert(inst.super, "Please use Class.new() not Class:Constructor()!")
+		return construct(inst, ...)
 	end
 	
 	return Class
